@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>📋 Student Record & Marks</h2>
+    <a href="{{ url_for('add_student') }}">➕ Add Student</a>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Roll</th><th>Name</th><th>Math</th><th>Science</th><th>English</th><th>Average</th><th>Grade</th><th>Actions</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{ s.roll }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.marks.math }}</td>
+            <td>{{ s.marks.science }}</td>
+            <td>{{ s.marks.english }}</td>
+            <td>{{ "%.2f"|format(s.average) }}</td>
+            <td>{{ s.grade }}</td>
+            <td>
+                <a href="{{ url_for('update_student', roll=s.roll) }}">✏️ Edit</a> |
+                <a href="{{ url_for('delete_student', roll=s.roll) }}">🗑️ Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

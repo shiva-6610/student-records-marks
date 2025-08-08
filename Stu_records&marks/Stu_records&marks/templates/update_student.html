@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Marks</title>
+</head>
+<body>
+    <h2>✏️ Update Marks for {{ student.name }}</h2>
+    <form method="POST">
+        Math Marks: <input type="number" name="math" value="{{ student.marks.math }}" required><br><br>
+        Science Marks: <input type="number" name="science" value="{{ student.marks.science }}" required><br><br>
+        English Marks: <input type="number" name="english" value="{{ student.marks.english }}" required><br><br>
+        <input type="submit" value="Update">
+    </form>
+    <a href="{{ url_for('index') }}">⬅ Back</a>
+</body>
+</html>
